@@ -23,6 +23,7 @@
 	<modules>
 		<module>swagger3-demo</module>
 		<module>module-demo</module>
+		<module>form/backend</module>
 	</modules>
 
 	<dependencies>
