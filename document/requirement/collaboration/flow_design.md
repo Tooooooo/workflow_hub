@@ -10,25 +10,37 @@
 - 输入/输出内容
   - 流程分类
     - 流程分类列表查询
+    ```http 
+    /admin/flow/flowCategory/list
+    ```
     - 流程分类添加
+     ```http 
+    /admin/flow/flowCategory/add
+    ```
     - 流程分类修改
+     ```http 
+    /admin/flow/flowCategory/update
+    ```
     - 流程分类删除
+     ```http 
+    /admin/flow/flowCategory/delete
+    ```
   - 流程设计
     - 流程设计列表查询
     ```http 
-    /admin/flow/flowEntry/list	post	流程设计列表查询
+    /admin/flow/flowEntry/list
     ```
     - 流程设计添加
     ```http
-    /admin/flow/flowEntry/add	post	保存流程添加
+    /admin/flow/flowEntry/add
     ```
     - 流程设计修改
     ```http
-    /admin/flow/flowEntry/update	post	保存流程修改
+    /admin/flow/flowEntry/update
     ```
     - 流程设计删除
     ```http
-    /admin/flow/flowEntry/delete	post	保存流程删除
+    /admin/flow/flowEntry/delete
     ```
 - 异常处理逻辑
 - 与其它功能的联系
