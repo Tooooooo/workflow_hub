@@ -32,7 +32,21 @@
 > 
 > 3.表单组件(例如下拉框)的属性数据源，通过视图获取
 > 
-> >>3.1 http://localhost:8082/FormDatasource/select()1
+> >>3.1 http://localhost:8082/FormDatasource/select()
+> 
+> 4.表单界面新增接口，编辑，删除（表单界面布局新增和修改时，界面组件样式以组件JSON存储，界面各个组件的属性（长宽高，是否必填校验等等）以表单参数和属性JSON存储）
+> 
+> >>4.1  http://localhost:8082/Form/add（页面id，表单编码，表单名称，表单类别，表单类型，表单主表id（关联数据源的主键ID），表单组件JSON，表单参数和属性JSON）
+> 
+> >>4.2  http://localhost:8082/Form/edit（表单主键Id,页面id，表单编码，表单名称，表单类别，表单类型，表单主表id（关联数据源的主键ID），表单组件JSON，表单参数和属性JSON）
+> 
+> >>4.3  http://localhost:8082/Form/delete（表单主键Id）
+> 
+> 5.界面渲染查询接口(获取表单主键Id,页面id，表单编码，表单名称，表单类别，表单类型，表单主表id（关联数据源的主键ID），表单组件JSON，表单参数和属性JSON 以及 关联的数据源主键Id，数据源名称，数据源表名,数据源表名称，以及字段属性)
+> 
+>>> 5.1 http://localhost:8082/Page/select（页面Id)
+
+
 
 - 异常处理逻辑
 - 与其它功能的联系
