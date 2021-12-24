@@ -9,15 +9,27 @@
   - 流程设计bpmn绘制
 - 输入/输出内容
   - 流程分类
-    - 流程分类查询
+    - 流程分类列表查询
     - 流程分类添加
     - 流程分类修改
     - 流程分类删除
   - 流程设计
-    - 流程设计查询
+    - 流程设计列表查询
+    ```http 
+    /admin/flow/flowEntry/list	post	流程设计列表查询
+    ```
     - 流程设计添加
+    ```http
+    /admin/flow/flowEntry/add	post	保存流程添加
+    ```
     - 流程设计修改
+    ```http
+    /admin/flow/flowEntry/update	post	保存流程修改
+    ```
     - 流程设计删除
+    ```http
+    /admin/flow/flowEntry/delete	post	保存流程删除
+    ```
 - 异常处理逻辑
 - 与其它功能的联系
 
