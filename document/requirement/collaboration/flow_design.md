@@ -60,6 +60,18 @@
     ```http
     /admin/flow/flowEntryVariable/delete
     ```
+    - 流程分类下拉列表
+    ```http
+    /admin/flow/flowCategory/listDict
+    ```
+    - 流程页面下拉列表
+    ```http
+    /admin/online/onlinePage/list
+    ```
+    - 在线表单下拉列表
+    ```http
+    /admin/online/onlineForm/list
+    ```
 - 异常处理逻辑
 - 与其它功能的联系
 
