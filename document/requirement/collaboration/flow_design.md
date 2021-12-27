@@ -38,67 +38,36 @@
   - 流程设计bpmn绘制
 - 输入/输出内容
   - 流程分类
-    - 流程分类列表查询
-    ```http 
-    /admin/flow/flowCategory/list
-    ```
+    
     - 流程分类添加
-     ```http 
-    /admin/flow/flowCategory/add
-    ```
+    
     - 流程分类修改
-     ```http 
-    /admin/flow/flowCategory/update
-    ```
+    
     - 流程分类删除
-     ```http 
-    /admin/flow/flowCategory/delete
-    ```
+    
   - 流程设计
     - 流程设计列表查询
-    ```http 
-    /admin/flow/flowEntry/list
-    ```
+    
     - 流程设计添加
-    ```http
-    /admin/flow/flowEntry/add
-    ```
+   
     - 流程设计修改
-    ```http
-    /admin/flow/flowEntry/update
-    ```
+    
     - 流程设计删除
-    ```http
-    /admin/flow/flowEntry/delete
-    ```
+   
     - 流程变量列表
-    ```http
-    /admin/flow/flowEntryVariable/list
-    ```
+   
     - 流程变量添加
-    ```http
-    /admin/flow/flowEntryVariable/add
-    ```
+   
     - 流程变量修改
-    ```http
-    /admin/flow/flowEntryVariable/update
-    ```
+   
     - 流程变量删除
-    ```http
-    /admin/flow/flowEntryVariable/delete
-    ```
+   
     - 流程分类下拉列表
-    ```http
-    /admin/flow/flowCategory/listDict
-    ```
+    
     - 流程页面下拉列表
-    ```http
-    /admin/online/onlinePage/list
-    ```
+   
     - 在线表单下拉列表
-    ```http
-    /admin/online/onlineForm/list
-    ```
+    
 - 异常处理逻辑
 - 与其它功能的联系
 
