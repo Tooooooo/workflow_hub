@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+title 修改流程分类
+actor 管理员
+participant 前端
+participant 后端
+database 数据库
+autonumber
+
+管理员 -> 前端: 点击编辑，进入编辑流程分类页面
+前端 -> 后端: /flow/flowCategory/update
+后端 -> 数据库: getById()，参数：流程分类id
+alt 判断根据id得到的流程分类为空
+后端 --[#blue]> 前端: response
+end
+activate 后端
+alt 判断原有分类编码和传入分类编码不一致
+后端 -> 数据库: getListByFilter()，参数：流程分类id、发布状态
+end
+@enduml
+1.用户发起修改流程分类请求
+2.前端向后端请求/flow/flowCategory/update，参数：流程分类id、流程分类名称、流程分类编码
+3.后端调用getById()，查询表zz_flow_category数据，参数：流程分类id
+4.后端向前端返回当前流程分类不存在
+5.后端调用getListByFilter()，查询表zz_flow_entry，参数：流程设计表实体(设置流程分类id,发布状态)
