@@ -9,22 +9,30 @@ database 数据库
 autonumber
 
 管理员 -> 前端: 点击编辑，进入编辑流程分类页面
+activate 前端
 前端 -> 后端: /flow/flowCategory/update
+activate 后端
 后端 -> 数据库: getById()，参数：流程分类id
+activate 数据库
 alt 判断根据id得到的流程分类为空
 后端 --[#blue]> 前端: response
 end
-activate 后端
 alt 判断原有分类编码和传入分类编码不一致
 后端 -> 数据库: getListByFilter()，参数：流程分类id、发布状态
 alt 判断得到的流程设计集合不为空
 后端 --[#blue]> 前端: response
 end
 end
+后端 -> 数据库: update()
+数据库 --[#blue]> 前端: response
 @enduml
 1.用户发起修改流程分类请求
-2.前端向后端请求/flow/flowCategory/update，参数：流程分类id、流程分类名称、流程分类编码
+2.前端向后端请求/flow/flowCategory/update，参数：流程分类id（不为空）、
+流程分类名称（不为空）、流程分类编码（不为空）
 3.后端调用getById()，查询表zz_flow_category数据，参数：流程分类id
 4.后端向前端返回当前流程分类不存在
 5.后端调用getListByFilter()，查询表zz_flow_entry，参数：流程设计表实体(设置流程分类id,发布状态为1)
 6.后端向前端返回当前流程分类存在已经发布的流程数据，分类标识不能修改
+7.后端调用update()，更新表zz_flow_category数据，参数：流程分类id、流程分类名称、流程分类编码、
+创建时间、创建人、更新时间、更新人
+8.后端向前端返回更新结果
