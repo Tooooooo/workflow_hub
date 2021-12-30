@@ -1,0 +1,20 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor 用户
+participant 前端
+participant 后端
+database 数据库
+
+用户 -> 前端 : 请求进入表单编辑界面
+前端 -> 后端 : /form/formedit
+后端 -> 数据库 : formedit()
+前端 <-- 数据库 : response
+@enduml
+
+1.用户进入表单编辑页面
+2.前端向后端请求/form/formedit，参数：页面id
+3.后端调用formedit(),通过页面id去获取关联的表名字段的注释，注释定义了表单字段组件JSON,获取到该JSON,
+4.后端返回该JSON到前端。

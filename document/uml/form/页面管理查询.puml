@@ -1,0 +1,20 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor 用户
+participant 前端
+participant 后端
+database 数据库
+
+用户 -> 前端 : 请求进入页面管理
+前端 -> 后端 : /page/pagemanager
+后端 -> 数据库 : selectpage()
+前端 <-- 数据库 : response
+@enduml
+
+1.用户进入填报页面
+2.前端向后端请求/page/pagemanager，参数：pagesize,pagenum
+3.后端调用selectpage()，查询数据。
+4.后端返回查询数据到前端。
