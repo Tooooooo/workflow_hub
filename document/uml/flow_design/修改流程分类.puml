@@ -12,13 +12,13 @@ autonumber
 activate 前端
 前端 -> 后端: /flow/flowCategory/update
 activate 后端
-后端 -> 数据库: getById()，参数：流程分类id
+后端 -> 数据库: getById()
 activate 数据库
 alt 判断根据id得到的流程分类为空
 后端 --[#blue]> 前端: response
 end
 alt 判断原有分类编码和传入分类编码不一致
-后端 -> 数据库: getListByFilter()，参数：流程分类id、发布状态
+后端 -> 数据库: getListByFilter()
 alt 判断得到的流程设计集合不为空
 后端 --[#blue]> 前端: response
 end
