@@ -1,6 +1,6 @@
 @startuml
 'https://plantuml.com/sequence-diagram
-title 新建流程分类
+title 删除流程分类
 actor 管理员
 participant 前端
 participant 后端
