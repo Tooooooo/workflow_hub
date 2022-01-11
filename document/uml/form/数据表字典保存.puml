@@ -1,0 +1,20 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor 用户
+participant 前端
+participant 后端
+database 数据库
+
+用户 -> 前端 : 请求进入新建字典界面
+前端 -> 后端 : /datadictionary/datadictionarysave
+后端 -> 数据库 : datadictionarysave()
+前端 <-- 数据库 : response
+@enduml
+
+1.用户进入新建字典界面
+2.前端向后端请求/datadictionary/datadictionarysave，参数：字典名称，字典类型，SQL查询
+3.后端调用datadictionarysave(),将字典名称，字典类型，SQL查询保存到数据库
+4.后端返回保存成功到前端。

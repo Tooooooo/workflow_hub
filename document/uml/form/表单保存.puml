@@ -8,13 +8,13 @@ participant 前端
 participant 后端
 database 数据库
 
-用户 -> 前端 : 请求进入表单编辑界面
+用户 -> 前端 : 请求进入表单新增界面
 前端 -> 后端 : /form/formsave
 后端 -> 数据库 : formsave()
 前端 <-- 数据库 : response
 @enduml
 
-1.用户进入表单编辑页面
-2.前端向后端请求/form/formsave，参数：页面id
-3.后端调用formsave(),将页面id和画好的界面以及配置的属性大JSON，版本号，创建时间，创建人保存到数据库
+1.用户进入表单新增界面
+2.前端向后端请求/form/formsave，参数：表单名称，表单编码
+3.后端调用formsave(),将表单名称，表单编码保存到数据库
 4.后端返回保存成功到前端。

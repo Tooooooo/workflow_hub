@@ -1,0 +1,20 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor 用户
+participant 前端
+participant 后端
+database 数据库
+
+用户 -> 前端 : 请求进入表单设计界面
+前端 -> 后端 : /formdesign/formdesignsave
+后端 -> 数据库 : formdesignsave()
+前端 <-- 数据库 : response
+@enduml
+
+1.用户进入新建字典界面
+2.前端向后端请求/formdesign/formdesignsave，参数：表单json，表单属性json
+3.后端调用formdesignsave(),将表单json，表单属性json保存到数据库
+4.后端返回保存成功到前端。
