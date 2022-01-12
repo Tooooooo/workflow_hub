@@ -1,0 +1,20 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor 用户
+participant 前端
+participant 后端
+database 数据库
+
+用户 -> 前端 : 请求进入新建数据源界面
+前端 -> 后端 : /datasource/datasourceadd
+后端 -> 数据库 : datasourceadd()
+前端 <-- 数据库 : response
+@enduml
+
+1.用户进入新建数据源界面
+2.前端向后端请求/datasource/datasourceadd，参数：数据源名称，数据源标识，数据源主表
+3.后端调用datasourceadd(),将数据源名称，数据源标识，数据源主表保存到数据库
+4.后端返回保存成功到前端。

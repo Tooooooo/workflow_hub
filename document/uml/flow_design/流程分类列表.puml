@@ -1,0 +1,21 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+title 流程分类列表
+actor 管理员
+participant 前端
+participant 后端
+database 数据库
+autonumber
+
+管理员 -> 前端: 点击查询，页面展示流程分类列表
+activate 前端
+前端 -> 后端: /flow/flowCategory/list
+activate 后端
+后端 -> 数据库: getFlowCategoryList()
+activate 数据库
+数据库 --[#blue]> 前端: response
+@enduml
+1.用户发起流程分类列表请求
+2.前端向后端请求/flow/flowCategory/list，参数：流程分类名称、流程分类编码
+3.后端调用getFlowCategoryList()，查询表zz_flow_category数据，参数：流程分类名称、流程分类编码
+4.后端向前端返回流程分类列表数据
