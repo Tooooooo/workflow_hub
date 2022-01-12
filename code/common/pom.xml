@@ -6,11 +6,11 @@
         <artifactId>mulit-module-template</artifactId>
         <groupId>com.whjryf</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../pom.xml</relativePath>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>form</artifactId>
+    <artifactId>common</artifactId>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -18,10 +18,11 @@
     </properties>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper -->
         <dependency>
-            <groupId>com.whjryf</groupId>
-            <artifactId>common</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>5.3.0</version>
         </dependency>
     </dependencies>
 </project>

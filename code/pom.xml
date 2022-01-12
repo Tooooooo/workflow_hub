@@ -23,6 +23,7 @@
 	<modules>
 		<module>swagger3-demo</module>
 		<module>module-demo</module>
+		<module>common</module>
 		<module>form/backend</module>
 	</modules>
 
@@ -60,11 +61,6 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>druid-spring-boot-starter</artifactId>
-			<version>1.2.8</version>
 		</dependency>
 	</dependencies>
 
