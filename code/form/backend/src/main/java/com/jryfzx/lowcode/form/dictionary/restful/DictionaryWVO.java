@@ -1,5 +1,6 @@
 package com.jryfzx.lowcode.form.dictionary.restful;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,6 +12,8 @@ import lombok.Setter;
 @Getter @Setter
 public class DictionaryWVO {
     private Integer id;
+    @Schema(description = "字典名称")
     private String showName;
+    @Schema(description = "字典类型")
     private String type;
 }

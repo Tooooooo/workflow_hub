@@ -1,6 +1,6 @@
 package com.jryfzx.lowcode.form.dictionary;
 
-import com.jryfzx.base.CodeBasedEnum;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.Getter;
 
 /**
@@ -9,32 +9,25 @@ import lombok.Getter;
  * @since 2022/1/10
  */
 @Getter
-public enum DictionaryType implements CodeBasedEnum {
+public enum DictionaryType {
 
-    enumeration(1,"枚举类型"),
-    dbTable(2,"数据表类型"),
-    buildIn(3,"固定类型");
+    enumeration("枚举类型"),
+    dbTable("数据表类型"),
+    buildIn("固定类型");
 
     private String show;
-    private Integer code;
 
-
-    DictionaryType(Integer code,String show) {
-        this.code = code;
+    DictionaryType(String show) {
         this.show = show;
     }
 
-    public static DictionaryType of(Integer code) {
-        switch (code) {
-            case 1:
-                return enumeration;
-            case 2:
-                return dbTable;
-            case 3:
-                return buildIn;
-            default:
-                throw new IllegalArgumentException("未知的字典类型: " + code);
-
+    @JsonCreator
+    public static DictionaryType of(String show) {
+        for (DictionaryType dt : DictionaryType.values()) {
+            if (dt.getShow().equals(show)) {
+                return dt;
+            }
         }
+        return null;
     }
 }

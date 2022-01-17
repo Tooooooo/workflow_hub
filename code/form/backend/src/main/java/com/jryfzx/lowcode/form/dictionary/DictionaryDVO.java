@@ -17,6 +17,7 @@ public class DictionaryDVO {
     private DictionaryType type;
     private String sql;
     private String enumeration;
+    private String buildInDictionaryKey;
     private LocalDateTime createTime;
     private String operator;
 
