@@ -1,4 +1,4 @@
-package com.whjryf.common.com.whjryf.flow;
+package com.whjryf.flow;
 
 import com.whjryf.common.version.Version;
 import lombok.Getter;
