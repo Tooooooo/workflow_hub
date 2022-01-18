@@ -25,7 +25,7 @@
 		<module>module-demo</module>
 		<module>common</module>
 		<module>form/backend</module>
-		<module>workflow/backend</module>
+		<module>workflow</module>
 	</modules>
 
 	<dependencies>
