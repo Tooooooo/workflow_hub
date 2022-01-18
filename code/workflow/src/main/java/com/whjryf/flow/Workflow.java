@@ -30,6 +30,10 @@ public class Workflow {
      * 因动态表单未到位，暂时对应到整型ID。部署流程时要顺着表单定义复制表单json.
      */
     private Integer form;
+    /**
+     * 对应 activiti 的 act_re_procdef 表中的 ID_ 字段.
+     */
+    private String processDefinitionId;
     private Map<String,FlowTask> tasks;
     private WorkflowType type;
     private Version version;

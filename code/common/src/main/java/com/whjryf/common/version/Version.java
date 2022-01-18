@@ -2,6 +2,7 @@ package com.whjryf.common.version;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.lang3.StringUtils;
 
 import java.time.LocalDateTime;
 
@@ -19,10 +20,24 @@ public class Version {
 
     private Integer id;
     private String versionName;
+
+    public String getVersionName() {
+        if (StringUtils.isBlank(this.versionName)) {
+            return "V"+this.versionNumber;
+        }
+        return this.versionName;
+    }
+
     /**
+     * 版本注释.
+     */
+    private String notes;
+
+    /*
      * 对应逻辑对象标识编码. 该编码在创建后就不可编辑.
      */
-    private String code;
+//    private String code;
+
     /**
      * 版本序号，为自然数递增.
      */
@@ -36,6 +51,6 @@ public class Version {
      * code 相同的多个版本中只允许一个为 current.
      */
     private Boolean current;
-    private LocalDateTime publishTime;
+    private LocalDateTime commitTime;
 
 }

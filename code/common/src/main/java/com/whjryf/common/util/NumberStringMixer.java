@@ -2,6 +2,8 @@ package com.whjryf.common.util;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.Arrays;
+
 /**
  * @since  2020/7/17
  * @version 0.1
@@ -25,7 +27,8 @@ public class NumberStringMixer {
     private static final int hdlism = nchar.length;
 
     /**
-     * 将一个长整型数值转换为乱序的36进制表示形式.
+     * 将一个正长整型数值转换为乱序的36进制表示形式.
+     * 注意：不支持mix负数.
      * @param m 待转换的数值
      * @param mc 尾数
      * @return 乱序的36进制
@@ -40,11 +43,45 @@ public class NumberStringMixer {
 
 
     /**
+     * 从乱序36进制字符串还原到十进制整数.
+     */
+    private static int n2m(String digitStr) {
+        if (digitStr.length() == 1) {
+            return locateChar(digitStr.charAt(0));
+        }
+        return locateChar(digitStr.charAt(0))
+                * pow(digitStr.length()-1)+n2m(digitStr.substring(1));
+    }
+
+    // 幂
+    private static int pow(int a) {
+        int r = 36;
+        for (int i = 1; i < a; i++) {
+            r *= 36;
+        }
+        return r;
+    }
+
+
+    private static int locateChar(char c) {
+        for (int i = 0; i < nchar.length; i++) {
+            if (nchar[i] == c) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+
+    /**
      * 采用随机的混淆模式加密数字, 向不良观察者隐藏.
      * @param regularNumber 具有规律的组合模式的字符串
      * @return 混淆后的结果
      */
     public static String mix(long regularNumber) {
+        if (0 > regularNumber) {
+            throw new IllegalArgumentException("不支持mix负数");
+        }
         return mix(m2n(regularNumber, ""));
     }
 
@@ -76,20 +113,26 @@ public class NumberStringMixer {
      * @param mixed 已混淆的字符串
      * @return 解除混淆后的字符串
      */
-    public static String unmix( String mixed ){
+    public static long unmix( String mixed ){
         char method = mixed.charAt( mixed.length() - 1 );
+        String result = "";
         switch (method) {
             case 'r':
-                return recoverR( mixed );
+                result = recoverR( mixed );
+                break;
             case 't':
-                return recoverT( mixed );
+                result = recoverT( mixed );
+                break;
             case 'u':
-                return recoverU( mixed );
+                result = recoverU( mixed );
+                break;
             case 'd':
-                return recoverD( mixed );
-            default:
-                return "###";
+                result = recoverD( mixed );
         }
+        if ("".equals(result)) {
+            return -1;
+        }
+        return n2m(result);
     }
 
 
@@ -234,77 +277,14 @@ public class NumberStringMixer {
         return recovered.substring( 0, recovered.length() - 1 );
     }
 
-/*
-    public static void main( String[] args ){
 
-        String s = "";
-        String t = "";
-        s = mix( "abcd" );
-        System.out.println( "-- mix(abcd): " + s );
-        System.out.println( "-- recover(" + s + "):" + recover( s ) );
-
-        t = mix( "1234" );
-        System.out.println( "-- mix(1234): " + t );
-        System.out.println( "-- recover(" + t + "):" + recover( t ) );
-
-        s = mix( "abcd" );
-        System.out.println( "-- mix(abcd): " + s );
-        System.out.println( "-- recover(" + s + "):" + recover( s ) );
-
-        t = mix( "1234" );
-        System.out.println( "-- mix(1234): " + t );
-        System.out.println( "-- recover(" + t + "):" + recover( t ) );
-
-        s = mix( "abcd" );
-        System.out.println( "-- mix(abcd): " + s );
-        System.out.println( "-- recover(" + s + "):" + recover( s ) );
-
-        t = mix( "1234" );
-        System.out.println( "-- mix(1234): " + t );
-        System.out.println( "-- recover(" + t + "):" + recover( t ) );
-
-        s = mix( "abcd" );
-        System.out.println( "-- mix(abcd): " + s );
-        System.out.println( "-- recover(" + s + "):" + recover( s ) );
-
-        t = mix( "1234" );
-        System.out.println( "-- mix(1234): " + t );
-        System.out.println( "-- recover(" + t + "):" + recover( t ) );
-
-        s = mix( "abcd" );
-        System.out.println( "-- mix(abcd): " + s );
-        System.out.println( "-- recover(" + s + "):" + recover( s ) );
-
-        t = mix( "1234" );
-        System.out.println( "-- mix(1234): " + t );
-        System.out.println( "-- recover(" + t + "):" + recover( t ) );
-
-        s = mix( "abcd" );
-        System.out.println( "-- mix(abcd): " + s );
-        System.out.println( "-- recover(" + s + "):" + recover( s ) );
-
-        t = mix( "1234" );
-        System.out.println( "-- mix(1234): " + t );
-        System.out.println( "-- recover(" + t + "):" + recover( t ) );
-
-        s = mix( "abcd" );
-        System.out.println( "-- mix(abcd): " + s );
-        System.out.println( "-- recover(" + s + "):" + recover( s ) );
-
-        t = mix( "1234" );
-        System.out.println( "-- mix(1234): " + t );
-        System.out.println( "-- recover(" + t + "):" + recover( t ) );
-
-        s = mix( "abcd" );
-        System.out.println( "-- mix(abcd): " + s );
-        System.out.println( "-- recover(" + s + "):" + recover( s ) );
-
-        t = mix( "1234" );
-        System.out.println( "-- mix(1234): " + t );
-        System.out.println( "-- recover(" + t + "):" + recover( t ) );
-
+    public static void main(String[] args) {
+        long num = 99;
+        System.out.println("long:" + num);
+        String mixed = mix(num);
+        System.out.println(mixed);
+        long unmixed = unmix(mixed);
+        System.out.println(unmixed);
     }
-*/
-
 
 }
