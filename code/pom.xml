@@ -24,7 +24,7 @@
 		<module>swagger3-demo</module>
 		<module>module-demo</module>
 		<module>common</module>
-		<module>form/backend</module>
+		<module>form</module>
 		<module>workflow</module>
 	</modules>
 
