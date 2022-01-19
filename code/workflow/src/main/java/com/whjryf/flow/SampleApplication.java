@@ -1,8 +1,9 @@
-package com.whjryf.common;
+package com.whjryf.flow;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -12,6 +13,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 @SpringBootApplication
+@MapperScan(basePackages="com.whjryf.flow.mapper")
 //@SpringBootApplication(scanBasePackages = {"com.whjryf.base"})
 //@ServletComponentScan
 //@ImportResource(locations = {"classpath:security.xml"})

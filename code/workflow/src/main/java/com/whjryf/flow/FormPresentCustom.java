@@ -1,4 +1,4 @@
-package com.whjryf.common.com.whjryf.flow;
+package com.whjryf.flow;
 
 /**
  * @author 涂鼎 tuding27@gmail.com  QQ:200161
